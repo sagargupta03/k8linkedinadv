@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fetch
+spec:
+  template:
+    spec:
+      containers:
+      - name: fetch
+        image: alpine
+        command: ["/bin/sh", "-c", "wget http://blue-green"]
+      restartPolicy: Never # Dont' retry if failed

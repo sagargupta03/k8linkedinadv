@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+
+kind: CronJob
+metadata:
+  name: fetch
+spec:
+  schedule: "*/1 * * * *" #Run every minute( cron syntax) or @hourly
+  jobTemplate: 
+    spec:
+      template:
+        spec:
+          containers:
+            - name: fetch
+              image: alpine
+              command: ["/bin/sh", "-c", "wget http://blue-green"]
+          restartPolicy: Never  #dont rety if failed
+  suspend: true #Set to true if you want to suspend in the future 

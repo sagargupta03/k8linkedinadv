@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+#apiVersion: apps/v1beta1 # done for K8S version > 1.16
+kind: Deployment
+metadata:
+  name: blue-green-deployment
+spec:
+  selector:
+    matchLabels:
+      app: blue-green
+  replicas: 2 # deployment runs 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: blue-green
+    spec:
+      containers:
+        - name: blue
+          image: docker.io/mtinside/blue-green:blue
