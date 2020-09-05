@@ -11,5 +11,5 @@ spec:
           memory: 64Gi # from 64 Mi to GI to get error
           cpu: 100m
         limits:
-          memory: 1Gi
+          memory: 64Gi
           cpu: 1
