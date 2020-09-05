@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+spec:
+  containers:
+    - name: web
+      image: nginx:1.18.0
+      resources:
+        requests:
+          memory: 64Gi # from 64 Mi to GI to get error
+          cpu: 100m
+        limits:
+          memory: 1Gi
+          cpu: 1
